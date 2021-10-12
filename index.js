@@ -95,16 +95,23 @@ Use the higher order function getAverageGoals to do the following:
  2. Return the the average number of the total home team goals and away team goals scored per match and round to the second decimal place. 
  
  (Hint: use .reduce and do this in 2 steps) 
- 
+
+ .toFixed()
+
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-   /* code here */
+
+function getAverageGoals(getFinalsCb) {
+   const homeAverage = getFinalsCb.reduce((acc, item) => {
+       return acc + item['Home Team Goals'] + item['Away Team Goals']
+   },0);
+   const awayAverage = getFinalsCb.reduce((acc, item) => {
+    return acc + item['Home Team Goals'] + item['Away Team Goals']
+},0);
+    return (homeAverage / getFinalsCb.length).toFixed(2);
 }
-
-
-
+ console.log(getAverageGoals(getFinals(fifaData)));
 
 /// 🥅 STRETCH 🥅 ///
 
