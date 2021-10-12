@@ -80,8 +80,11 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 // .map()
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(array, getYearsCb, getWinnersCb) {
+    const newYears = getYearsCb(array, getFinals);
+    const newWinners = getWinnersCb(array, getFinals);
+    const msgArray = newWinners.map((item, index) => `In ${newYears[index]}, ${item} won the world cup!`);
+    return msgArray;
 }
 
 
